@@ -3,11 +3,11 @@
 // @homepage    https://github.com/nj-lc/userscripts/
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.4
+// @version     0.5
 // ==/UserScript==
 
-let muted_words = []
-let remove_words = []
+let muted_words = [] // array of strings or regex. posts that contain these will be removed.
+let replace_words = [] // array of arrays of 2 strings or regex. the first will be replaced with the second.
 
 setInterval(() => {
     let post_box = document.querySelector(".main-input > textarea")
@@ -17,11 +17,12 @@ setInterval(() => {
   
     // remove posts and words
     Array.from(document.querySelectorAll(".Status")).map(status => {
-        if (status) {
+        if (status && !status.classList.contains("ph-replaced")) {
             let content = status.querySelector(".status-content")
-            remove_words.map(word => {
-                content.innerHTML = content.innerHTML.replace(word, "")
+            replace_words.map(words => {
+                content.innerHTML = content.innerHTML.replace(words[0], words[1])
             })
+            status.classList.add("ph-replaced")
             muted_words.map(word => {
                 if (content.innerText.match(word)) {
                     status.remove()
