@@ -52,12 +52,14 @@ media_removal = [
 setInterval(() => {
     Array.from(document.querySelectorAll(".Status")).map(status => {
         user = status.querySelector(".account-name")
-        if (user.innerText.includes("@")) {
-            if (media_removal.includes(user.innerText.split("@")[1])) {
-                status.querySelector("button.button-unstyled.interactive").querySelector("path").style = "fill:orange;"
-            }
-            if (reject.includes(user.innerText.split("@")[1])) {
-                status.querySelector("button.button-unstyled.interactive").querySelector("path").style = "fill:red;"
+        if (user) {
+            if (user.innerText.includes("@")) {
+                if (media_removal.includes(user.innerText.split("@")[1])) {
+                    status.querySelector("button.button-unstyled.interactive").querySelector("path").style = "fill:orange;"
+                }
+                if (reject.includes(user.innerText.split("@")[1])) {
+                    status.querySelector("button.button-unstyled.interactive").querySelector("path").style = "fill:red;"
+                }
             }
         }
     })
