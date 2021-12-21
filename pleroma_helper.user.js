@@ -3,7 +3,7 @@
 // @homepage    https://github.com/nj-lc/userscripts/
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.3
+// @version     0.4
 // ==/UserScript==
 
 let muted_words = []
@@ -15,22 +15,17 @@ setInterval(() => {
     // change post placeholder
     post_box.placeholder = "make a good post"
   
-    // remove posts with muted words
+    // remove posts and words
     Array.from(document.querySelectorAll(".Status")).map(status => {
         if (status) {
+            let content = status.querySelector(".status-content")
+            remove_words.map(word => {
+                content.innerHTML = content.innerHTML.replace(word, "")
+            })
             muted_words.map(word => {
-                if (status.querySelector(".status-content").innerText.match(word)) {
+                if (content.innerText.match(word)) {
                     status.remove()
                 }
-            })
-        }
-    })
-
-    // remove words
-    Array.from(document.querySelectorAll(".status-content")).map(element => {
-        if (element) {
-            remove_words.map(word => {
-                element.innerHTML = element.innerHTML.replace(word, "")
             })
         }
     })
