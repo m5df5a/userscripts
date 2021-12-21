@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name        Fedi Block Visualizer
+// @homepage    https://github.com/nj-lc/userscripts/
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.1
+// @version     0.2
 // ==/UserScript==
 
 let reject = [
@@ -43,12 +44,11 @@ let reject = [
 
 
 setInterval(() => {
-    Array.from(document.querySelectorAll(".account-name")).map(user => {
+    Array.from(document.querySelectorAll(".Status")).map(status => {
+        user = status.querySelector(".account-name")
         if (user.innerText.includes("@")) {
             if (reject.includes(user.innerText.split("@")[1])) {
-                if (!user.innerText.includes("BLOCKED")) {
-                    user.innerText = "BLOCKED " + user.innerText
-                }
+                status.querySelector("button.button-unstyled.interactive").querySelector("path").style = "fill:red;"
             }
         }
     })
