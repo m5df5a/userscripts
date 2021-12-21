@@ -26,4 +26,6 @@ You have to edit the `@match` in the script to your instance domain
 
 Features:
 
-* Show a warning when the instance of the user you are trying to reply to blocks your instance
+* Show a red reply arrow when the instance is blocking you completely
+
+* Show an orange reply arrow when the instance is removing media from reply
