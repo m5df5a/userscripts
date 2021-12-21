@@ -16,6 +16,8 @@ Features:
 
 * Remove double spaces
 
+* reddit and 4chan short codes are changed to links (not 100% working, but good enough)
+
 ---
 
 # Fedi Block Visualizer
