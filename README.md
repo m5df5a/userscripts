@@ -8,7 +8,7 @@ Features:
 
 * Change post placeholder
 
-* Remove words using regex
+* Replace words using regex
 
 * Remove posts using regex
 
