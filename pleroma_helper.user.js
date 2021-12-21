@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name        Pleroma Helper
+// @homepage    https://github.com/nj-lc/userscripts/
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.2
+// @version     0.3
 // ==/UserScript==
 
 let muted_words = []
@@ -35,10 +36,10 @@ setInterval(() => {
     })
   
     // Fix home instance button
-    let name = document.querySelector("#content > div.main > div > div > div.user-card.user-card-rounded-t > div.panel-heading > div > div.container > div > div.bottom-line > a")
-    let button = document.querySelector("#content > div.main > div > div > div.user-card.user-card-rounded-t > div.panel-heading > div > div.container > div > div.top-line > button")
+    let name = document.querySelectorAll(".user-summary")[1]
+    let button = document.querySelector(".external-link-button")
     if (name && button) {
-        name = name.innerText.split("@")
+        name = name.querySelector(".user-screen-name").innerText.split("@")
         button.onclick = () => window.open("https://"+name[2]+"/"+name[1])
     }
   
