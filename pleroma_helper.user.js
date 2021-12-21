@@ -2,7 +2,7 @@
 // @name        Pleroma Helper
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.1
+// @version     0.2
 // ==/UserScript==
 
 let muted_words = []
@@ -14,12 +14,12 @@ setInterval(() => {
     // change post placeholder
     post_box.placeholder = "make a good post"
   
-    // mute words
-    Array.from(document.querySelectorAll(".status-content")).map(element => {
-        if (element) {
+    // remove posts with muted words
+    Array.from(document.querySelectorAll(".Status")).map(status => {
+        if (status) {
             muted_words.map(word => {
-                if (element.innerText.match(word)) {
-                    element.parentElement.parentElement.parentElement.parentElement.remove()
+                if (status.querySelector(".status-content").innerText.match(word)) {
+                    status.remove()
                 }
             })
         }
