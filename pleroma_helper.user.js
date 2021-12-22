@@ -3,11 +3,12 @@
 // @homepage    https://github.com/nj-lc/userscripts/
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.5.1
+// @version     0.6
 // ==/UserScript==
 
 let muted_words = [] // array of strings or regex. posts that contain these will be removed.
 let replace_words = [
+    [/ {2,}/g, " "], // double spaces
     [/( |<br>|^)(r\/.+?)( |<br>|$)/g, '<a href="https://www.reddit.com/$2">$1$2$3</a>'], // reddit
     [/( |<br>|^)(\/[a-z349]{1,4}\/)( |<br>|$)/g, '<a href="https://boards.4channel.org$2">$1$2$3</a>'] // 4chan
 ] // array of arrays of 2 strings or regex. the first will be replaced with the second.
@@ -41,12 +42,6 @@ setInterval(() => {
         name = name.querySelector(".user-screen-name").innerText.split("@")
         button.onclick = () => window.open("https://"+name[2]+"/"+name[1])
     }
-  
-    // double spaces
-    Array.from(document.querySelectorAll(".status-content")).map(element => {
-        if (element) {
-            element.innerHTML = element.innerHTML.replace(/ {2,}/g, " ")
-        }
-    })
+
     post_box.value = post_box.value.replace(/ {2,}/g, " ")
 }, 1000)
