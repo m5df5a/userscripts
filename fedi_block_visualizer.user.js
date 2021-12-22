@@ -3,7 +3,7 @@
 // @homepage    https://github.com/nj-lc/userscripts/
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.3
+// @version     0.3.1
 // ==/UserScript==
 
 let reject = [
@@ -50,8 +50,9 @@ media_removal = [
 
 
 setInterval(() => {
+    "use strict"
     Array.from(document.querySelectorAll(".Status")).map(status => {
-        user = status.querySelector(".account-name")
+        let user = status.querySelector(".account-name")
         if (user) {
             if (user.innerText.includes("@")) {
                 if (media_removal.includes(user.innerText.split("@")[1])) {
