@@ -3,7 +3,7 @@
 // @homepage    https://github.com/nj-lc/userscripts/
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.3.1
+// @version     0.3.2
 // ==/UserScript==
 
 let reject = [
@@ -40,28 +40,28 @@ let reject = [
     "queer.hacktivis.me",
     "varishangout.net",
     "mk.paritybit.ca"
-]
+];
 
 media_removal = [
     "freecumextremist.com",
     "leafposter.club",
     "baraag.net"
-]
+];
 
 
 setInterval(() => {
-    "use strict"
+    "use strict";
     Array.from(document.querySelectorAll(".Status")).map(status => {
-        let user = status.querySelector(".account-name")
+        let user = status.querySelector(".account-name");
         if (user) {
             if (user.innerText.includes("@")) {
                 if (media_removal.includes(user.innerText.split("@")[1])) {
-                    status.querySelector("button.button-unstyled.interactive").querySelector("path").style = "fill:orange;"
+                    status.querySelector("button.button-unstyled.interactive path").style = "fill:orange;";
                 }
                 if (reject.includes(user.innerText.split("@")[1])) {
-                    status.querySelector("button.button-unstyled.interactive").querySelector("path").style = "fill:red;"
+                    status.querySelector("button.button-unstyled.interactive path").style = "fill:red;";
                 }
             }
         }
     })
-}, 1000)
+}, 1000);
