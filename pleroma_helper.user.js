@@ -3,11 +3,11 @@
 // @homepage    https://github.com/nj-lc/userscripts/
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.6.5
+// @version     0.6.6
 // ==/UserScript==
 
-let muted_words = []; // [string|regex (string to check for), boolean (if post should be deleted even when you are mentioned in it)] posts that contain these will be removed.
-let replace_words = [
+const muted_words = []; // [string|regex (string to check for), boolean (if post should be deleted even when you are mentioned in it)] posts that contain these will be removed.
+const replace_words = [
   [/ {2,}/g, " "], // double spaces
   [/( |<br>|^)(r\/.+?)( |<br>|$)/g, '<a href="https://www.reddit.com/$2">$1$2$3</a>'], // reddit
   [/( |<br>|^)(\/[a-z349]{1,4}\/)( |<br>|$)/g, '<a href="https://boards.4channel.org$2">$1$2$3</a>'], // 4chan
@@ -15,12 +15,12 @@ let replace_words = [
 ]; // [string|regex, string|regex] the first will be replaced with the second.
 
 // options
-let delete_not_followed = true;
+const delete_not_followed = true;
 
 setInterval(() => {
   "use strict";
-  let post_box = document.querySelector(".main-input textarea");
-  let username = document.querySelector(".user-screen-name").innerText;
+  const post_box = document.querySelector(".main-input textarea");
+  const username = document.querySelector(".user-screen-name").innerText;
 
   // change post placeholder
   post_box.placeholder = localStorage.getItem("post_box_placeholder") || "Just landed in L.A.";
