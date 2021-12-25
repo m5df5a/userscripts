@@ -16,9 +16,9 @@ Features:
 
 * Remove double spaces
 
-* reddit and 4chan short codes are changed to links (not 100% working, but good enough)
+* Reddit and 4chan short codes are changed to links (not 100% working, but good enough)
 
-* colored text. usage: [blue]colored text[/]
+* Colored text. usage: [blue]colored text[/]
 
 ---
 
@@ -33,3 +33,7 @@ Features:
 * Show a red reply arrow when the instance is blocking you completely
 
 * Show an orange reply arrow when the instance is removing media from reply
+
+# Twitch Tag Remover
+
+Removes channels with selected tags from the game browser.
