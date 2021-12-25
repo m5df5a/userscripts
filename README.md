@@ -34,6 +34,8 @@ Features:
 
 * Show an orange reply arrow when the instance is removing media from reply
 
+---
+
 # Twitch Tag Remover
 
 Removes channels with selected tags from the game browser.
