@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Pleroma Helper
 // @homepage    https://github.com/nj-lc/userscripts/
-// @match       https://youjo.love/*
+// @match       https://youjo.love/main/*
 // @grant       none
 // @version     0.6.6
 // ==/UserScript==
