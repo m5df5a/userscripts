@@ -1,13 +1,12 @@
 // ==UserScript==
 // @name        Fedi Block Visualizer
 // @homepage    https://github.com/nj-lc/userscripts/
-// @match       https://youjo.love/*
+// @match       https://youjo.love/main/*
 // @grant       none
 // @version     0.3.2
 // ==/UserScript==
 
-let reject = [
-  "posting.lolicon.rocks",
+const reject = [
   "disqordia.space",
   "waifuism.life",
   "is.badat.dev",
@@ -42,7 +41,7 @@ let reject = [
   "mk.paritybit.ca"
 ];
 
-media_removal = [
+const media_removal = [
   "freecumextremist.com",
   "leafposter.club",
   "baraag.net"
