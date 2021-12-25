@@ -30,22 +30,17 @@ setInterval(() => {
     if (status && !status.classList.contains("ph-replaced")) {
       let content = status.querySelector(".status-content");
       muted_words.map(word => {
-        if (content.innerText.match(word[0])) {
-          if (word[1] || (!word[1] && !content.innerText.match(username))) {
+        if (content.innerText.match(word[0]))
+          if (word[1] || (!word[1] && !content.innerText.match(username)))
             status.remove();
-          }
-        }
       });
-      if (status && delete_not_followed) {
-        if (status.querySelector(".-strikethrough") && !content.innerText.match(username)) {
+      if (status && delete_not_followed)
+        if (status.querySelector(".-strikethrough") && !content.innerText.match(username))
           status.remove();
-        }
-      }
-      if (content) {
+      if (content)
         replace_words.map(words => {
           content.innerHTML = content.innerHTML.replace(words[0], words[1]);
         });
-      }
       status.classList.add("ph-replaced");
     }
   });
