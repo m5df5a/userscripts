@@ -18,6 +18,8 @@ Features:
 
 * reddit and 4chan short codes are changed to links (not 100% working, but good enough)
 
+* colored text. usage: [blue]colored text[/]
+
 ---
 
 # Fedi Block Visualizer
