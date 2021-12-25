@@ -20,6 +20,8 @@ Features:
 
 * Colored text. usage: [blue]colored text[/]
 
+* Removing posts that are a reply to private posts you cant see
+
 ---
 
 # Fedi Block Visualizer

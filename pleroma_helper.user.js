@@ -3,7 +3,7 @@
 // @homepage    https://github.com/nj-lc/userscripts/
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.6.4
+// @version     0.6.5
 // ==/UserScript==
 
 let muted_words = []; // [string|regex (string to check for), boolean (if post should be deleted even when you are mentioned in it)] posts that contain these will be removed.
@@ -13,6 +13,9 @@ let replace_words = [
   [/( |<br>|^)(\/[a-z349]{1,4}\/)( |<br>|$)/g, '<a href="https://boards.4channel.org$2">$1$2$3</a>'], // 4chan
   [/\[(.*?)\](.*?)\[\/\]/g, '<font color="$1">$2</font>'] // color
 ]; // [string|regex, string|regex] the first will be replaced with the second.
+
+// options
+let delete_not_followed = true;
 
 setInterval(() => {
   "use strict";
@@ -30,13 +33,19 @@ setInterval(() => {
         if (content.innerText.match(word[0])) {
           if (word[1] || (!word[1] && !content.innerText.match(username))) {
             status.remove();
-            return;
           }
         }
       });
-      replace_words.map(words => {
-        content.innerHTML = content.innerHTML.replace(words[0], words[1]);
-      });
+      if (status && delete_not_followed) {
+        if (status.querySelector(".-strikethrough") && !content.innerText.match(username)) {
+          status.remove();
+        }
+      }
+      if (content) {
+        replace_words.map(words => {
+          content.innerHTML = content.innerHTML.replace(words[0], words[1]);
+        });
+      }
       status.classList.add("ph-replaced");
     }
   });
