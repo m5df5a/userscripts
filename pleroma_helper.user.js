@@ -3,7 +3,7 @@
 // @homepage    https://github.com/nj-lc/userscripts/
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.6.2
+// @version     0.6.3
 // ==/UserScript==
 
 let muted_words = []; // array of strings or regex. posts that contain these will be removed.
@@ -22,20 +22,20 @@ setInterval(() => {
   post_box.placeholder = localStorage.getItem("post_box_placeholder") || "Just landed in L.A.";
 
   // remove posts and words
-  Array.from(document.querySelectorAll(".Status")).map(status => {
+  Array.from(document.querySelectorAll(".Status, .notification")).map(status => {
     if (status && !status.classList.contains("ph-replaced")) {
       let content = status.querySelector(".status-content");
       replace_words.map(words => {
         content.innerHTML = content.innerHTML.replace(words[0], words[1]);
-      })
+      });
       status.classList.add("ph-replaced");
       muted_words.map(word => {
         if (content.innerText.match(word)) {
           status.remove();
         }
-      })
+      });
     }
-  })
+  });
 
   // Fix home instance button
   let name = document.querySelectorAll(".user-summary")[1];
