@@ -22,6 +22,8 @@ Features:
 
 * Removing posts that are a reply to private posts you cant see
 
+* Removing posts from users from your Timeline unless they tag you.
+
 ---
 
 # Fedi Block Visualizer

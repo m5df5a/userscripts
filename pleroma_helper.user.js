@@ -6,6 +6,7 @@
 // @version     0.6.6
 // ==/UserScript==
 
+const unlisted_users = []; // [string] users in here will only be displayed when they tag you. without the @ before the name and without instance domain of the user is from the same instance as you
 const muted_words = []; // [string|regex (string to check for), boolean (if post should be deleted even when you are mentioned in it)] posts that contain these will be removed.
 const replace_words = [
   [/ {2,}/g, " "], // double spaces
@@ -29,14 +30,23 @@ setInterval(() => {
   Array.from(document.querySelectorAll(".Status, .notification")).map(status => {
     if (status && !status.classList.contains("ph-replaced")) {
       let content = status.querySelector(".status-content");
+
       muted_words.map(word => {
         if (content.innerText.match(word[0]))
           if (word[1] || (!word[1] && !content.innerText.match(username)))
             status.remove();
       });
+
+      if (status)
+        if (status.classList.contains("Status") && status.querySelector(".account-name"))
+          if (unlisted_users.includes(status.querySelector(".account-name").innerText))
+            if (!content.innerText.match(username))
+              status.remove();
+
       if (status && delete_not_followed)
         if (status.querySelector(".-strikethrough") && !content.innerText.match(username))
           status.remove();
+
       if (content)
         replace_words.map(words => {
           content.innerHTML = content.innerHTML.replace(words[0], words[1]);
