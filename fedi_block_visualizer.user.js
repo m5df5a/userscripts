@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Fedi Block Visualizer
 // @homepage    https://github.com/nj-lc/userscripts/
-// @match       https://youjo.love/main/*
+// @match       https://youjo.love/*
 // @grant       none
 // @version     0.3.2
 // ==/UserScript==
