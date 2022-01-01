@@ -39,7 +39,7 @@ setInterval(() => {
 
       if (status && location.pathname == "/main/friends")
         if (status.classList.contains("Status") && status.querySelector(".account-name"))
-          if (unlisted_users.includes(status.querySelector(".account-name").innerText.split("@")[0]))
+          if (unlisted_users.includes(status.querySelector(".account-name").innerText))
             if (!content.innerText.match(username))
               status.remove();
 
