@@ -3,7 +3,7 @@
 // @homepage    https://github.com/nj-lc/userscripts/
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.6.6
+// @version     0.6.7
 // ==/UserScript==
 
 const unlisted_users = []; // [string] users in here will only be displayed when they tag you. without the @ before the name and without instance domain of the user is from the same instance as you
@@ -39,7 +39,7 @@ setInterval(() => {
 
       if (status)
         if (status.classList.contains("Status") && status.querySelector(".account-name"))
-          if (unlisted_users.includes(status.querySelector(".account-name").innerText))
+          if (unlisted_users.includes(status.querySelector(".account-name").innerText.split("@")[0]))
             if (!content.innerText.match(username))
               status.remove();
 
