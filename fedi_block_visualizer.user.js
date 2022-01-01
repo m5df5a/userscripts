@@ -37,7 +37,7 @@ const reject = [
   "gearlandia.haus",
   "shitposter.club",
   "queer.hacktivis.me",
-  "varishangout.net",
+  "kiwifarms.cc",
   "mk.paritybit.ca"
 ];
 
