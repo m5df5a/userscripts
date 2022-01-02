@@ -3,7 +3,7 @@
 // @homepage    https://github.com/nj-lc/userscripts/
 // @match       https://youjo.love/*
 // @grant       none
-// @version     0.3.2
+// @version     0.3.3
 // ==/UserScript==
 
 const reject = [
@@ -51,14 +51,15 @@ const media_removal = [
 setInterval(() => {
   "use strict";
   Array.from(document.querySelectorAll(".Status")).map(status => {
-    let user = status.querySelector(".account-name");
+    const user = status.querySelector(".account-name");
     if (user) {
       if (user.innerText.includes("@")) {
-        if (media_removal.includes(user.innerText.split("@")[1])) {
-          status.querySelector("button.button-unstyled.interactive path").style = "fill:orange;";
+        const reply_button = status.querySelector("button.button-unstyled.interactive path");
+        if (media_removal.includes(user.innerText.split("@")[1]) && reply_button) {
+          reply_button.style = "fill:orange;";
         }
-        if (reject.includes(user.innerText.split("@")[1])) {
-          status.querySelector("button.button-unstyled.interactive path").style = "fill:red;";
+        if (reject.includes(user.innerText.split("@")[1]) && reply_button) {
+          reply_button.style = "fill:red;";
         }
       }
     }
