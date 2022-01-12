@@ -35,7 +35,7 @@ const reject = [
   "mk.catgirlsfor.science",
   "fedi.absturztau.be",
   "gearlandia.haus",
-  "shitposter.club",
+  "void.brechanegra.net",
   "queer.hacktivis.me",
   "kiwifarms.cc",
   "mk.paritybit.ca"
