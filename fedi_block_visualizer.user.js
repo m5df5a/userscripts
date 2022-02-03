@@ -44,7 +44,8 @@ const reject = [
 const media_removal = [
   "freecumextremist.com",
   "leafposter.club",
-  "baraag.net"
+  "baraag.net",
+  "desuposter.club"
 ];
 
 
